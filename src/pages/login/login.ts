@@ -1,10 +1,10 @@
 import { UserInterface } from './../../app/core/interfaces/user.interface';
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { NavController, NavParams } from 'ionic-angular';
 import { UserService } from '../../app/core/services/user.service';
 import { Validators, FormBuilder, FormGroup } from '@angular/forms';
+import { SignupPage } from '../signup/signup';
 
-@IonicPage()
 @Component({
   selector: 'page-login',
   templateUrl: 'login.html',
@@ -43,11 +43,7 @@ export class LoginPage {
   }
 
   goToSignup(){
-    this.navCtrl.push('SignupPage');
-  }
-
-  ionViewDidLoad() {
-    
+    this.navCtrl.push(SignupPage);
   }
 
 }

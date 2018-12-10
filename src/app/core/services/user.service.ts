@@ -15,4 +15,9 @@ export class UserService {
     .pipe(map(data => data));
   }
 
+  signup(user): Observable<UserInterface>{
+    return this.apiService.post('auth/user/create', user)
+    .pipe(map(data => data));
+  }
+
 }
