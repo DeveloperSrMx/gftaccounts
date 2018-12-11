@@ -1,3 +1,4 @@
+import { JwtProvider } from './core/providers/jwt.provider';
 
 import { BrowserModule } from '@angular/platform-browser';
 import { ErrorHandler, NgModule } from '@angular/core';
@@ -41,7 +42,8 @@ import { SignupPage } from '../pages/signup/signup';
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     UserService,
-    ApiService
+    ApiService,
+    JwtProvider
   ]
 })
 export class AppModule {}

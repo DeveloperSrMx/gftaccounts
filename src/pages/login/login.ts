@@ -1,9 +1,11 @@
+import { HomePage } from './../home/home';
 import { UserInterface } from './../../app/core/interfaces/user.interface';
 import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
 import { UserService } from '../../app/core/services/user.service';
 import { Validators, FormBuilder, FormGroup } from '@angular/forms';
 import { SignupPage } from '../signup/signup';
+import { JwtProvider } from '../../app/core/providers/jwt.provider';
 
 @Component({
   selector: 'page-login',
@@ -13,12 +15,12 @@ export class LoginPage {
 
   userForm: FormGroup;
   user: UserInterface = {} as UserInterface;
-  result: any;
 
   constructor(
     public navCtrl: NavController, 
     public navParams: NavParams,
     private userService: UserService,
+    private jwtProvider: JwtProvider,
     private fb: FormBuilder) {
     this.userForm = this.fb.group({
       email: ['', Validators.required],
@@ -26,7 +28,9 @@ export class LoginPage {
     });
   }
 
-
+  /**
+   * This method allows login
+   */
   loginUser(): any {
     
     this.user = this.userForm.value;
@@ -34,7 +38,9 @@ export class LoginPage {
     this.userService.login(this.user)
       .subscribe(
         success => {
-          this.result = success;
+          this.jwtProvider.saveUserId(success['token']).then(() =>{
+            this.navCtrl.push(HomePage);
+          });
         },
         () => {
           //on error
@@ -42,6 +48,9 @@ export class LoginPage {
       );
   }
 
+  /**
+   * This method allows navigate to signup page
+   */
   goToSignup(){
     this.navCtrl.push(SignupPage);
   }
