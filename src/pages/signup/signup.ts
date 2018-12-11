@@ -48,7 +48,7 @@ export class SignupPage {
           this.confirm();
         },
         () => {
-          //on error
+          loading.dismiss();
         }
       );
 

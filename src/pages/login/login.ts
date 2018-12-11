@@ -1,7 +1,7 @@
 import { HomePage } from './../home/home';
 import { UserInterface } from './../../app/core/interfaces/user.interface';
 import { Component } from '@angular/core';
-import { NavController, NavParams } from 'ionic-angular';
+import { NavController, NavParams, LoadingController } from 'ionic-angular';
 import { UserService } from '../../app/core/services/user.service';
 import { Validators, FormBuilder, FormGroup } from '@angular/forms';
 import { SignupPage } from '../signup/signup';
@@ -21,6 +21,7 @@ export class LoginPage {
     public navParams: NavParams,
     private userService: UserService,
     private jwtProvider: JwtProvider,
+    public loadingCtrl: LoadingController,
     private fb: FormBuilder) {
     this.userForm = this.fb.group({
       email: ['', Validators.required],
@@ -32,6 +33,12 @@ export class LoginPage {
    * This method allows login
    */
   loginUser(): any {
+
+    let loading = this.loadingCtrl.create({
+      content: 'Please wait...'
+    });
+
+    loading.present();
     
     this.user = this.userForm.value;
 
@@ -39,11 +46,12 @@ export class LoginPage {
       .subscribe(
         success => {
           this.jwtProvider.saveUserId(success['token']).then(() =>{
+            loading.dismiss();
             this.navCtrl.push(HomePage);
           });
         },
         () => {
-          //on error
+          loading.dismiss();
         }
       );
   }
