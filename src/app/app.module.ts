@@ -17,6 +17,7 @@ import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { HttpTokenInterceptor } from './core/interceptors/http.token.interceptor';
 import { CardsComponent } from './core/components/cards.component';
 import { CardsService } from './core/services/cards.service';
+import { AccountsService } from './core/services/accounts.service';
 
 @NgModule({
   declarations: [
@@ -50,7 +51,8 @@ import { CardsService } from './core/services/cards.service';
     UserService,
     ApiService,
     JwtProvider,
-    CardsService
+    CardsService,
+    AccountsService
   ]
 })
 export class AppModule {}

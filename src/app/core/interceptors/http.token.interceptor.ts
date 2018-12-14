@@ -15,7 +15,9 @@ export class HttpTokenInterceptor implements HttpInterceptor {
 
       const token = this.jwtProvider.tokenJWT; 
 
-      if (token && !req.url.includes('auth',0)) {
+      if (token && req.url.includes('mock',0)) {
+
+      }else if(token && !req.url.includes('auth',0)){
         headersConfig['X-access-token'] = token;
       }
   

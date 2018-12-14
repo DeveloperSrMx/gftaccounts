@@ -3,18 +3,28 @@
     <button ion-button menuToggle>
       <ion-icon name="menu"></ion-icon>
     </button>
-    <ion-title>Home</ion-title>
+    <ion-title>My Accounts</ion-title>
   </ion-navbar>
 </ion-header>
 
 <ion-content padding>
 
-  <button ion-button secondary menuToggle>Toggle Menu</button>
+  <ion-list>
+    <ion-item *ngFor="let account of accounts">
+      <h2> {{'Card: ' + account.type + ' | ' + account.name  + ' | ' + account.balance}}</h2>
+    </ion-item>
 
-  <button ion-button primary (click)="showModel()">ver modelo</button>
+    <h2 *ngIf="accounts?.length === 0">Aun no tienes cuentas :(</h2>
+  </ion-list>
+
+  <!-- <button ion-button secondary menuToggle>Toggle Menu</button>
+
+  <button ion-button primary (click)="showModel()">Selected Card</button> -->
+
+  <!-- <button ion-button primary (click)="newAccount()">New Account</button> -->
 
 
-  <cards [title]="lookupDataTitle" [okText]="okText" [cancelText]="cancelText">
+  <cards [title]="title" [okText]="okText" [cancelText]="cancelText">
   </cards>
 
 

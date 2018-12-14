@@ -40,4 +40,8 @@ export class ApiService {
             `${environment.api_url}${path}`
         ).pipe(catchError(this.formatErrors));
     }
+
+    getMock(path: string): Observable<any> {
+        return this.http.get(path);
+    }
 }
