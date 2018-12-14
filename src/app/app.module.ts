@@ -15,6 +15,8 @@ import { LoginPage } from '../pages/login/login';
 import { SignupPage } from '../pages/signup/signup';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { HttpTokenInterceptor } from './core/interceptors/http.token.interceptor';
+import { CardsComponent } from './core/components/cards.component';
+import { CardsService } from './core/services/cards.service';
 
 @NgModule({
   declarations: [
@@ -22,7 +24,8 @@ import { HttpTokenInterceptor } from './core/interceptors/http.token.interceptor
     HomePage,
     ListPage,
     LoginPage,
-    SignupPage
+    SignupPage,
+    CardsComponent
   ],
   imports: [
     BrowserModule,
@@ -36,7 +39,8 @@ import { HttpTokenInterceptor } from './core/interceptors/http.token.interceptor
     HomePage,
     ListPage,
     LoginPage,
-    SignupPage
+    SignupPage,
+    CardsComponent
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: HttpTokenInterceptor, multi: true },
@@ -45,7 +49,8 @@ import { HttpTokenInterceptor } from './core/interceptors/http.token.interceptor
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     UserService,
     ApiService,
-    JwtProvider
+    JwtProvider,
+    CardsService
   ]
 })
 export class AppModule {}
