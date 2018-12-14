@@ -1,8 +1,8 @@
 import { AccountsService } from './../../app/core/services/accounts.service';
-import { CardsComponent } from './../../app/core/components/cards.component';
-import { Component, ViewChild } from '@angular/core';
+import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
 import { Account } from '../../app/core/interfaces/account.interface';
+import { NewAccountPage } from '../new-account/new-account';
 
 @Component({
   selector: 'page-home',
@@ -12,21 +12,9 @@ import { Account } from '../../app/core/interfaces/account.interface';
 export class HomePage {
 
   accounts: Account[];
-  @ViewChild(CardsComponent) child: CardsComponent;
-  title = 'Cards';
-  okText= "ok";
-  cancelText="cancel";
-
 
   constructor(public navCtrl: NavController, private accountsService: AccountsService) {
 
-  }
-  
-  /**
-   * This function print the combo´s card value
-   */
-  showModel(){
-    console.log(this.child.value);
   }
 
   /**
@@ -45,7 +33,7 @@ export class HomePage {
   }
 
   newAccount() {
-    // this.navCtrl.push(NewAccountPage);
+    this.navCtrl.push(NewAccountPage);
   }
 
   ngOnInit() {

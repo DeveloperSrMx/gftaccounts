@@ -1,0 +1,16 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>New Account</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <form [formGroup]="newAccountForm" (ngSubmit)="newAccount()">
+    <ion-input formControlName="card" [disabled]="true" type="text" *ngIf="false" placeholder="Type card" [(ngModel)]="child.value" ></ion-input>
+    <cards [title]="title" [okText]="okText" [cancelText]="cancelText">
+    </cards>
+    <div padding>
+      <button ion-button block type="submit" [disabled]="child.value == ''">send</button>
+    </div>
+  </form>
+</ion-content>

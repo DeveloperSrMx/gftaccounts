@@ -25,4 +25,12 @@ export class AccountsService {
       .pipe(map(data => data));
   }
 
+  /**
+   * Send request for new account.
+   */
+  newAccount(account): Observable<any>{
+    return this.apiService.post('accounts', account)
+    .pipe(map(data => data));    
+  }
+
 }

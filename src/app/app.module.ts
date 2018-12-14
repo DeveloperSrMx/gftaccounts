@@ -18,6 +18,7 @@ import { HttpTokenInterceptor } from './core/interceptors/http.token.interceptor
 import { CardsComponent } from './core/components/cards.component';
 import { CardsService } from './core/services/cards.service';
 import { AccountsService } from './core/services/accounts.service';
+import { NewAccountPage } from '../pages/new-account/new-account';
 
 @NgModule({
   declarations: [
@@ -26,6 +27,7 @@ import { AccountsService } from './core/services/accounts.service';
     ListPage,
     LoginPage,
     SignupPage,
+    NewAccountPage,
     CardsComponent
   ],
   imports: [
@@ -41,6 +43,7 @@ import { AccountsService } from './core/services/accounts.service';
     ListPage,
     LoginPage,
     SignupPage,
+    NewAccountPage,
     CardsComponent
   ],
   providers: [
